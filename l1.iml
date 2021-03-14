@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
+
+import java.util.Arrays;
+
+public class Sorting {
+
+    public static void main(String[] args) {
+
+         int array[] = {1, 2, 7, 9, 3};
+         int sizeOfArray = 5;
+
+         boolean check = false;
+         int buffer;
+         boolean typeOfSort = true; // true - sort from 0 -> 10 and false from 10 -> 0
+         int sortAlgorithm = 1; // 1 - bubble, 2 - insert, 3 - select
+
+         if (sortAlgorithm == 1) {
+              if (typeOfSort == true) {
+
+                   while (!check) {
+                        check = true;
+
+                        for (int i = 0; i < sizeOfArray - 1; i++) {
+                             if (array[i] > array [i + 1]) {
+                                  check = false;
+
+                                  buffer = array[i];
+                                  array[i] = array[i + 1];
+                                  array[i + 1] = buffer;
+                             }
+                        }
+                   }
+                   System.out.println(Arrays.toString(array));
+              } else if (typeOfSort == false){
+
+                   while (!check) {
+                        check = true;
+
+                        for (int i = 0; i < sizeOfArray - 1; i++) {
+                             if (array[i] < array[i + 1]) {
+                                  check = false;
+
+                                  buffer = array[i];
+                                  array[i] = array[i + 1];
+                                  array[i + 1] = buffer;
+                             }
+                        }
+                   }
+                   System.out.println(Arrays.toString(array));
+              }
+         } else if (sortAlgorithm == 2) {
+              if (typeOfSort == true) {
+                   for (int i = 0; i < sizeOfArray; i++) {
+                        buffer = array[i];
+                        int move = i - 1;
+                        for(; move >= 0; move--) {
+                             if (buffer < array[move]) {
+                                  array[move + 1] = array[move];
+                             } else {
+                                  break;
+                             }
+                        }
+                        array[move + 1] = buffer;
+                   }
+                   System.out.println(Arrays.toString(array));
+              } else if (typeOfSort == false){
+                   for (int i = 0; i < sizeOfArray; i++) {
+                        buffer = array[i];
+                        int move = i - 1;
+                        for(; move >= 0; move--) {
+                             if (buffer > array[move]) {
+                                  array[move + 1] = array[move];
+                             } else {
+                                  break;
+                             }
+                        }
+                        array[move + 1] = buffer;
+                   }
+                   System.out.println(Arrays.toString(array));
+              }
+         } else if (sortAlgorithm == 3) {
+              if (typeOfSort == true) {
+                   for (int i = 0; i < sizeOfArray; i++) {
+                        int min = array[i];
+                        int currentInt = i;
+                        for(int move = i + 1; move < sizeOfArray; move++) {
+                             if (array[move] < min) {
+                                  min = array[move];
+                                  currentInt = move;
+                             }
+                        }
+                        array[currentInt] = array[i];
+                        array[i] = min;
+                   }
+                   System.out.println(Arrays.toString(array));
+              } else if (typeOfSort == false){
+                   for (int i = 0; i < sizeOfArray; i++) {
+                        int min = array[i];
+                        int currentInt = i;
+                        for(int move = i + 1; move < sizeOfArray; move++) {
+                             if (array[move] > min) {
+                                  min = array[move];
+                                  currentInt = move;
+                             }
+                        }
+                        array[currentInt] = array[i];
+                        array[i] = min;
+                   }
+                   System.out.println(Arrays.toString(array));
+              }
+         }
+    }
+}
